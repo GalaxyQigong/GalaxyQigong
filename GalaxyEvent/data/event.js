@@ -1,10 +1,12 @@
 (function ($) {
     $(function () {
 
-        console.log("633");
+        //年，月日，标题，内容，格式(green为加粗)
+
         var events = [
             [2015, "11.07", "<img src='static/h-ui/images/galaxy.png' width='38' height='38'>银河系气功组织宣告成立", "", ""],
             [2020, "5月", "<img src='data/img/chenxue.bmp' width='35' height='35'>尘雪西去", "痛失吾爱", "green"],
+            [2020, "01.23", "新冠爆发", "武汉封城，桥洞侠在家数了俩月钱", ""],
             [2021, "09.09", "99复活节，a8还阳日", "", ""],
             [2021, "09.10", "D神公开身份，竟是WXG接班人", "<img src='data/img/god-d.jpg' width='100' height='100' class='pic'/>", "green"],
         ];
@@ -32,8 +34,8 @@
             yearEventsMap = sortMap(yearEventsMap, false);
             yearEventsMap.forEach(function(eventsMap){
                 appendHtml += '<li';
-                if(eventsMap.color.length > 0){
-                    appendHtml += ' class="' + eventsMap.color + '"';
+                if(eventsMap.titleFormat.length > 0){
+                    appendHtml += ' class="' + eventsMap.titleFormat + '"';
                 }
                 appendHtml += '><h3>' + eventsMap.date + "<span>" + eventsMap.year + '</span></h3><dl><dt>' + eventsMap.title;
                 if(eventsMap.detail.length > 0){
@@ -42,30 +44,20 @@
                 appendHtml += '</dt></dl></li>';
             });
             appendHtml += "</ul></div>";
-            //document.getElementById("history").innerHTML+= appendHtml;
-            //addDom(yearEventsMap);
         });
         document.getElementById("history").innerHTML += appendHtml;
         
-        //map = sortMap(map, false);
-        
-        console.log("over");
     });
-    
-    function addDom(eve){
-        
-    }
   
-    function buildEvent(year, date, title, detail, color){
+    function buildEvent(year, date, title, detail, titleFormat){
         var Event = new Object();
         Event.year = year;
         Event.date = date;
-        Event.id = year.toString() + date.toString();
 
         Event.title = title;
         Event.detail = detail;
 
-        Event.color = color;
+        Event.titleFormat = titleFormat;
         return Event;
     }
   
