@@ -9,6 +9,8 @@
             [2020, "01.23", "新冠爆发", "武汉封城，桥洞侠在家数了俩月钱", ""],
             [2021, "09.09", "99复活节，a8还阳日", "", ""],
             [2021, "09.10", "D神公开身份，竟是WXG接班人", "<img src='data/img/god-d.jpg' width='100' height='100' class='pic'/>", "green"],
+            [2021, "11.05", "BOSS强势插入豹纹势力组织", "", ""],
+            [2021, "11.07", "<img src='data/img/EDG-logo.png' width='35' height='35'>EDG夺冠", "两名群成员不幸被封", ""],
         ];
 
         var mapYear = new Map();
