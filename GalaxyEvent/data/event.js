@@ -1,6 +1,8 @@
 (function ($) {
     $(function () {
 
+        buildParser();
+        
         //年，月日，标题，内容，格式(green为加粗)
 
         var events = [
@@ -17,7 +19,6 @@
         ];
 
         var mapYear = new Map();
-        var mapParser = new Map();
 
         for(var eve of events) {
             var e = buildEvent(...eve);
@@ -54,6 +55,7 @@
         document.getElementById("history").innerHTML += appendHtml;
         
     });
+    var mapParser = new Map();
   
     function buildEvent(year, date, title, detail, titleFormat){
         var Event = new Object();
