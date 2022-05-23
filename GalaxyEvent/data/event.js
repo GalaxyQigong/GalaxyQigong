@@ -64,8 +64,6 @@
 
         Event.title = parse(title);
         Event.detail = parse(detail);
-        console.log(Event.title);
-        console.log(Event.detail);
 
         Event.titleFormat = titleFormat;
         return Event;
@@ -73,10 +71,10 @@
 
     function buildParser(){
         mapParser.set("avatar", function(value){
-            return "<img src='data/img/" + this.value + "' width='35' height='35'>";
+            return "<img src='data/img/" + value + "' width='35' height='35'>";
         });
         mapParser.set("pic", function(value){
-            return "<img src='data/img/" + this.value + "'>";
+            return "<img src='data/img/" + value + "'>";
         });
     }
     
