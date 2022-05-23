@@ -1,4 +1,5 @@
 (function ($) {
+    var mapParser = new Map();
     $(function () {
 
         buildParser();
@@ -55,7 +56,6 @@
         document.getElementById("history").innerHTML += appendHtml;
         
     });
-    var mapParser = new Map();
   
     function buildEvent(year, date, title, detail, titleFormat){
         var Event = new Object();
