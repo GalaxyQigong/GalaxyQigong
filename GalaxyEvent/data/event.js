@@ -5,12 +5,15 @@
 
         var events = [
             [2015, "11.07", "<img src='static/h-ui/images/galaxy.png' width='38' height='38'>银河系气功组织宣告成立", "", ""],
-            [2020, "5月", "<img src='data/img/chenxue.bmp' width='35' height='35'>尘雪西去", "痛失吾爱", "green"],
-            [2020, "01.23", "新冠爆发", "武汉封城，桥洞侠在家数了俩月钱", ""],
-            [2021, "09.09", "99复活节，a8还阳日", "", ""],
-            [2021, "09.10", "D神公开身份，竟是WXG接班人", "<img src='data/img/god-d.jpg' width='100' height='100' class='pic'/>", "green"],
-            [2021, "11.05", "BOSS强势插入豹纹势力组织", "", ""],
+            [2020, "5月", "<img src='data/img/person/chenxue.bmp' width='35' height='35'>尘雪西去", "痛失吾爱", "green"],
+            [2020, "01.23", "<img src='data/img/person/jiongjionger.bmp' width='35' height='35'>新冠爆发", "武汉封城，桥洞侠在家数了俩月钱", ""],
+            [2021, "09.09", "<img src='data/img/person/a8105.bmp' width='35' height='35'>99复活节，a8还阳日", "", ""],
+            [2021, "09.10", "<img src='data/img/person/dh.bmp' width='35' height='35'>D神公开身份，竟是WXG接班人", "<img src='data/img/god-d.jpg' width='100' height='100' class='pic'/>", "green"],
+            [2021, "11.05", "<img src='data/img/person/xjboss.bmp' width='35' height='35'>BOSS强势插入豹纹势力组织", "", ""],
             [2021, "11.07", "<img src='data/img/EDG-logo.png' width='35' height='35'>EDG夺冠", "两名群成员不幸被封", ""],
+            [2022, "02.11", "<img src='data/img/person/xjboss.bmp' width='35' height='35'>BOSS从豹纹势力组织毕业", "", ""],
+            [2022, "04.23", "<img src='data/img/person/a8105.bmp' width='35' height='35'>女装穿白丝", "", ""],
+            [2022, "05.21", "<img src='data/img/person/srar.bmp' width='35' height='35'>研发niubi.asdj94jv01.xyz", "", ""],
         ];
 
         var mapYear = new Map();
