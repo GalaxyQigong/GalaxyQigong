@@ -5,18 +5,19 @@
 
         var events = [
             [2015, "11.07", "<img src='static/h-ui/images/galaxy.png' width='38' height='38'>银河系气功组织宣告成立", "", ""],
-            [2020, "5月", "<img src='data/img/person/chenxue.bmp' width='35' height='35'>尘雪西去", "痛失吾爱", "green"],
-            [2020, "01.23", "<img src='data/img/person/jiongjionger.bmp' width='35' height='35'>新冠爆发", "武汉封城，桥洞侠在家数了俩月钱", ""],
-            [2021, "09.09", "<img src='data/img/person/a8105.bmp' width='35' height='35'>99复活节，a8还阳日", "", ""],
-            [2021, "09.10", "<img src='data/img/person/dh.bmp' width='35' height='35'>D神公开身份，竟是WXG接班人", "<img src='data/img/god-d.jpg' width='100' height='100' class='pic'/>", "green"],
-            [2021, "11.05", "<img src='data/img/person/xjboss.bmp' width='35' height='35'>BOSS强势插入豹纹势力组织", "", ""],
-            [2021, "11.07", "<img src='data/img/EDG-logo.png' width='35' height='35'>EDG夺冠", "两名群成员不幸被封", ""],
-            [2022, "02.11", "<img src='data/img/person/xjboss.bmp' width='35' height='35'>BOSS从豹纹势力组织毕业", "", ""],
-            [2022, "04.23", "<img src='data/img/person/a8105.bmp' width='35' height='35'>女装穿白丝", "", ""],
-            [2022, "05.21", "<img src='data/img/person/srar.bmp' width='35' height='35'>研发niubi.asdj94jv01.xyz", "", ""],
+            [2020, "5月", "[avatar:person/chenxue.bmp]尘雪西去", "痛失吾爱", "green"],
+            [2020, "01.23", "[avatar:person/jiongjionger.bmp]新冠爆发", "武汉封城，桥洞侠在家数了俩月钱", ""],
+            [2021, "09.09", "[avatar:person/a8105.bmp]99复活节，a8还阳日", "", ""],
+            [2021, "09.10", "[avatar:person/dh.bmp]D神公开身份，竟是WXG接班人", "[pic:god-d.jpg|width:100|height:100|class:pic]", "green"],
+            [2021, "11.05", "[avatar:person/xjboss.bmp]BOSS强势插入豹纹势力组织", "", ""],
+            [2021, "11.07", "[avatar:EDG-logo.png]EDG夺冠", "两名群成员不幸被封", ""],
+            [2022, "02.11", "[avatar:person/xjboss.bmp]BOSS从豹纹势力组织毕业", "", ""],
+            [2022, "04.23", "[avatar:person/a8105.bmp]女装穿白丝", "", ""],
+            [2022, "05.21", "[avatar:person/srar.bmp]研发[a:[h2:niubi.asdj94jv01.xyz]|href:https://www.baidu.com|target:_blank]", "", ""],
         ];
 
         var mapYear = new Map();
+        var mapParser = new Map();
 
         for(var eve of events) {
             var e = buildEvent(...eve);
@@ -64,6 +65,62 @@
 
         Event.titleFormat = titleFormat;
         return Event;
+    }
+
+    function buildParser(){
+        mapParser.set("avatar", function(value){
+            return "<img src='data/img/" + this.value + "' width='35' height='35'>";
+        });
+        mapParser.set("pic", function(value){
+            return "<img src='data/img/" + this.value + "'>";
+        });
+    }
+    
+    function parse(str){
+        var pos1 = str.lastIndexOf("[") + 1;
+        if(pos1 == 0) return str;
+        var pos2 = str.indexOf("]", pos1);
+        var find = str.substr(pos1, pos2 - pos1);
+        var kv = tinySplit(find, "|", 2);
+        var argsMap = parseArgsMap(kv[1]);
+        kv = kv[0].split(":");
+
+        var convert = "";
+        argsMap.forEach(function(value, key){
+            convert += " " + key + "=" + "'" + value + "'";
+        });
+        var parser = mapParser.get(kv[0]);
+        if(parser == null){
+            convert = "<" + kv[0] + convert + ">" + kv[1] + "</" + kv[0] + ">";
+        }else{
+            if(convert.length > 0){
+                convert = parser(kv[1] + "'" + convert.substr(0, convert.length - 1));
+            }else{
+                convert = parser(kv[1]);
+            }
+        }
+        return parse(str.replace("[" + find + "]", convert));
+    }
+
+    function parseArgsMap(str){
+        var argsMap = new Map();
+        if(str == null || str == "") return argsMap;
+        var args = str.split("|");
+        for(var arg of args){
+            arg = tinySplit(arg, ":", 2);
+            if(arg.length == 2){
+                argsMap.set(arg[0], arg[1]);
+            }
+        }
+        return argsMap;
+    }
+
+    function tinySplit(str, spec, count){
+        var arr = str.split(spec);
+        if(arr.length > count){
+            return [arr.shift(), arr.join(spec)];
+        }
+        return arr;
     }
   
     function sortMap(map, isKeyUpSort) {
