@@ -60,8 +60,8 @@
         Event.year = year;
         Event.date = date;
 
-        Event.title = title;
-        Event.detail = detail;
+        Event.title = parse(title);
+        Event.detail = parse(detail);
 
         Event.titleFormat = titleFormat;
         return Event;
