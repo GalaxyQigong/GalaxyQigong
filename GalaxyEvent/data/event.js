@@ -17,7 +17,7 @@
             [2022, "02.11", "[avatar:person/xjboss.bmp]BOSS从豹纹势力组织毕业", "", ""],
             [2022, "04.23", "[avatar:person/a8105.bmp]a8女装刮腿毛穿白丝", "", ""],
             [2022, "05.21", "[avatar:person/srar.bmp]研发[a:[b:niubi.asdj94jv01.xyz]|href:https://www.baidu.com|target:_blank]", "", ""],
-            [2023, "06.17", "[avatar:event/a8105_marry.jpg]a8大婚！！！", "", ""],
+            [2023, "06.17", "[avatar:person/a8105.bmp]a8大婚！！！", "[pic:event/a8105_marry.jpg|width:100|height:100|class:pic]", "green"],
         ];
 
         var mapYear = new Map();
